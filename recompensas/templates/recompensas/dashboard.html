@@ -1,0 +1,104 @@
+{% extends "recompensas/base.html" %}
+
+{% block title %}Painel do Xerife · Django Bounty Hunter{% endblock %}
+
+{% block content %}
+  <h1 class="titulo-oeste display-6 mb-4">Painel do Xerife</h1>
+
+  <!-- Indicador financeiro -->
+  <div class="row g-4 mb-5">
+    <div class="col-12 col-md-5">
+      <div class="card poster-card h-100 text-center p-4">
+        <p class="poster-eyebrow mb-2">Recompensas em aberto</p>
+        <p class="poster-recompensa" style="font-size: 2.4rem;">
+          US$ {{ total_recompensas_ativas }}
+        </p>
+        <p class="poster-sub mb-0">
+          {{ total_cartazes_ativos }} cartaz{{ total_cartazes_ativos|pluralize:"es" }} ativo{{ total_cartazes_ativos|pluralize }} no território
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="row g-4">
+    <!-- Ranking de ameaças -->
+    <div class="col-12 col-lg-6">
+      <h2 class="h5 titulo-oeste mb-3">Ranking de ameaças</h2>
+      <div class="table-responsive">
+        <table class="table table-dark table-striped align-middle">
+          <thead>
+            <tr>
+              <th>Bando</th>
+              <th>Área de atuação</th>
+              <th class="text-end">Procurados ativos</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for bando in ranking_bandos %}
+              <tr>
+                <td>{{ bando.nome }}</td>
+                <td>{{ bando.area_atuacao }}</td>
+                <td class="text-end">
+                  <span class="badge bg-danger">{{ bando.total_procurados_ativos }}</span>
+                </td>
+              </tr>
+            {% empty %}
+              <tr><td colspan="3" class="text-center text-white-50 py-3">Nenhum bando cadastrado.</td></tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Alvos prioritários -->
+    <div class="col-12 col-lg-6">
+      <h2 class="h5 titulo-oeste mb-3">Alvos prioritários</h2>
+      <ul class="list-group list-group-flush">
+        {% for procurado in alvos_prioritarios %}
+          <li class="list-group-item bg-dark text-light d-flex justify-content-between align-items-center">
+            <span>
+              {{ procurado.nome }}
+              {% if procurado.apelido %}<em class="text-white-50">"{{ procurado.apelido }}"</em>{% endif %}
+            </span>
+            <span class="badge bg-danger">{{ procurado.get_nivel_periculosidade_display }}</span>
+          </li>
+        {% empty %}
+          <li class="list-group-item bg-dark text-light">Nenhum alvo ativo no momento.</li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+
+  <!-- Últimas baixas -->
+  <div class="mt-5">
+    <h2 class="h5 titulo-oeste mb-3">Últimas baixas</h2>
+    <div class="table-responsive">
+      <table class="table table-dark table-striped align-middle">
+        <thead>
+          <tr>
+            <th>Foragido</th>
+            <th>Status</th>
+            <th>Caçador responsável</th>
+            <th class="text-end">Recompensa paga</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for cartaz in ultimas_baixas %}
+            <tr>
+              <td>{{ cartaz.procurado.nome }}</td>
+              <td>
+                <span class="badge status-badge status-{{ cartaz.status|lower }}">
+                  {{ cartaz.get_status_display }}
+                </span>
+              </td>
+              <td>{{ cartaz.cacador.nome|default:"— sem registro —" }}</td>
+              <td class="text-end">US$ {{ cartaz.valor_recompensa }}</td>
+            </tr>
+          {% empty %}
+            <tr><td colspan="4" class="text-center text-white-50 py-3">Nenhuma baixa registrada ainda.</td></tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+{% endblock %}

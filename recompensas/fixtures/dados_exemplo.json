@@ -1,0 +1,21 @@
+[
+  {"model": "recompensas.bando", "pk": 1, "fields": {"nome": "Gangue do Vale Seco", "area_atuacao": "Vale Seco e arredores"}},
+  {"model": "recompensas.bando", "pk": 2, "fields": {"nome": "Irmandade do Corvo Negro", "area_atuacao": "Redwater"}},
+  {"model": "recompensas.bando", "pk": 3, "fields": {"nome": "Cartel de Prata Velha", "area_atuacao": "Prata Velha"}},
+
+  {"model": "recompensas.cacador", "pk": 1, "fields": {"nome": "Rosa Guimarães", "reputacao": 420}},
+  {"model": "recompensas.cacador", "pk": 2, "fields": {"nome": "Teodoro Nascimento", "reputacao": 180}},
+
+  {"model": "recompensas.procurado", "pk": 1, "fields": {"nome": "Joe \"Serpente\" Alves", "apelido": "Serpente", "nivel_periculosidade": 4, "bando": 1}},
+  {"model": "recompensas.procurado", "pk": 2, "fields": {"nome": "Martha Coleman", "apelido": "A Viúva Negra", "nivel_periculosidade": 5, "bando": 2}},
+  {"model": "recompensas.procurado", "pk": 3, "fields": {"nome": "Elias Bento Cordeiro", "apelido": "", "nivel_periculosidade": 2, "bando": 1}},
+  {"model": "recompensas.procurado", "pk": 4, "fields": {"nome": "Francisca \"Dedo Rápido\" Reis", "apelido": "Dedo Rápido", "nivel_periculosidade": 3, "bando": 3}},
+  {"model": "recompensas.procurado", "pk": 5, "fields": {"nome": "Ovídio Tramontina", "apelido": "", "nivel_periculosidade": 1, "bando": null}},
+
+  {"model": "recompensas.cartaz", "pk": 1, "fields": {"procurado": 1, "valor_recompensa": "1500.00", "data_emissao": "2026-01-15", "status": "ATIVO", "cacador": null, "atualizado_em": "2026-01-15T09:00:00Z"}},
+  {"model": "recompensas.cartaz", "pk": 2, "fields": {"procurado": 2, "valor_recompensa": "3200.00", "data_emissao": "2026-02-01", "status": "ATIVO", "cacador": null, "atualizado_em": "2026-02-01T10:00:00Z"}},
+  {"model": "recompensas.cartaz", "pk": 3, "fields": {"procurado": 3, "valor_recompensa": "800.00", "data_emissao": "2025-12-20", "status": "ABATIDO", "cacador": 1, "atualizado_em": "2026-01-05T14:00:00Z"}},
+  {"model": "recompensas.cartaz", "pk": 4, "fields": {"procurado": 4, "valor_recompensa": "2100.00", "data_emissao": "2026-01-28", "status": "ATIVO", "cacador": null, "atualizado_em": "2026-01-28T08:30:00Z"}},
+  {"model": "recompensas.cartaz", "pk": 5, "fields": {"procurado": 5, "valor_recompensa": "450.00", "data_emissao": "2025-11-10", "status": "CAPTURADO", "cacador": 2, "atualizado_em": "2026-01-10T16:45:00Z"}},
+  {"model": "recompensas.cartaz", "pk": 6, "fields": {"procurado": 1, "valor_recompensa": "600.00", "data_emissao": "2025-09-05", "status": "CAPTURADO", "cacador": 1, "atualizado_em": "2026-01-20T11:15:00Z"}}
+]
